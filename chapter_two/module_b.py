@@ -1,7 +1,7 @@
-import module_a
+from . import _module_a
 
 def b_func():
     print("Function in module B")
 
 def a_func_from_b():
-    module_a.a_func()
+    _module_a.a_func()
