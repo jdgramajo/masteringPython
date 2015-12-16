@@ -4,11 +4,21 @@ from notes.note import Note
 
 class TestNote(unittest.TestCase):
     
-    def setUp(self):
-        self.note = Note("Sample memo", "Sample tag")
+    note = None
 
-    def tearDown(self):
-        del self.note
+    @classmethod
+    def setUpClass(cls):
+        TestNote.note = Note("Sample memo", "Sample tag")
 
-    def test_find_note(self):
-        self.assertTrue(self.note.match("Sample"))
+    @classmethod
+    def tearDownClass(cls):
+        del TestNote.note
+
+    def test_find_note_by_memo_or_tag(self):
+        self.assertTrue(TestNote.note.match("Sample"))
+
+    def test_find_note_by_memo(self):
+        self.assertTrue(TestNote.note.match("memo"))
+
+    def test_find_note_by_tag(self):
+        self.assertTrue(TestNote.note.match("tag"))
