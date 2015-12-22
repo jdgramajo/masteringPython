@@ -24,7 +24,7 @@ class TestNotebook(unittest.TestCase):
 
     # Turns out that the first note created in notebook receives an id of 2,
     # very likely because when the Note class is loaded, it is run and the first
-    # in of last_id happens, so the first instatiation receives a no. 2.
+    # inc of last_id happens, so the first instatiation receives a no. 2.
     def test_03_modify_memo(self):
         TestNotebook.notebook.modify_memo(2, "Modified memo")
         self.assertEqual(TestNotebook.notebook.notes[0].memo, "Modified memo")
