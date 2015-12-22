@@ -1,4 +1,4 @@
-from notes.note import Note
+from chapter_two.notes.note import Note
 
 class Notebook:
     '''Represent a colleciton of notes that can be tagged,
