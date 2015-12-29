@@ -20,17 +20,25 @@ class NotebookIface(cmd.Cmd):
         else:
             print('A notebook already is in use.')
 
-    def do_add(self, *args):
-        'Adds a note to the notebook with first param as memo
+    def do_add(self, args):
+        """\
+        Adds a note to the notebook with first param as memo
         and second param as tag.
         If there is no notebook in use, it warns and exits.
-        Usage: add all words in memo tag:tag'
+        Usage: add all words in memo tag:tag"""
         if self.notebook == None:
             print('No notebook created yet, create one first.')
         else:
-            all_params = args.split()
-            self.notebook.new_note(all_params[0:-1], 
-                all_paramsi[-1:].split(':')[1])
+            all_args = ''.join(args)
+            self.notebook.new_note(all_args.split()[0:-1], 
+                all_args.split()[-1::].split(':')[1])
+
+    def do_show_all(self, args):
+        'Shows all memos and tags'
+        print(len(self.notebook.notes))
+        for note in self.notebook.notes:
+            print('id: {}\nMemo: {}\ntag: {}\n'.format(note.id,
+                note.memo, note.tags))
 
     def do_reset(self, args):
         'Clear screen.'

@@ -1,6 +1,6 @@
 import unittest
 
-from notes.notebook import Notebook
+from chapter_two.notes.notebook import Notebook
 
 class TestNotebook(unittest.TestCase):
 
